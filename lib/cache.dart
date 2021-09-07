@@ -14,7 +14,7 @@ class Cache<T> {
   Timer? _timer;
 
   Cache({Duration? duration}) {
-    _duration = duration ?? Duration(minutes: 60);
+    _duration = duration ?? const Duration(minutes: 60);
   }
 
   /// Gets a cached item with the given key
@@ -41,7 +41,7 @@ class Cache<T> {
     List<T>? list;
 
     for (int index = _cache.length - 1; index >= 0; index--) {
-      var item = _cache[index];
+      final item = _cache[index];
 
       if (_isItemOutdated(item)) {
         removeItem(item);
@@ -61,7 +61,7 @@ class Cache<T> {
 
   /// Inserts an item with the given key and duration into the cache
   void putWithDuration(String key, T item, Duration duration) {
-    var endTime = _nowInSeconds() + duration.inSeconds;
+    final endTime = _nowInSeconds() + duration.inSeconds;
 
     final CacheItem<T> cacheItem = CacheItem<T>(key, item, endTime);
     _cache.add(cacheItem);
@@ -78,13 +78,13 @@ class Cache<T> {
   /// Inserts many items into the cache with the given duration
   void putManyWithDuration(
       List<T> items, String Function(T item) getKey, Duration duration) {
-    var endTime = _nowInSeconds() + duration.inSeconds;
+    final endTime = _nowInSeconds() + duration.inSeconds;
 
-    items.forEach((item) {
-      var key = getKey(item);
+    for (final item in items) {
+      final key = getKey(item);
       final CacheItem<T> cacheItem = CacheItem<T>(key, item, endTime);
       _cache.add(cacheItem);
-    });
+    }
 
     // Try to start the timer if not done yet
     _tryStartTimer();
@@ -106,6 +106,7 @@ class Cache<T> {
   }
 
   /// Sets a new default duration
+  // ignore: avoid_setters_without_getters
   set duration(Duration dur) {
     _duration = dur;
   }
@@ -118,7 +119,7 @@ class Cache<T> {
       return;
     }
 
-    _timer = Timer.periodic(Duration(seconds: 10), _timerCallBack);
+    _timer = Timer.periodic(const Duration(seconds: 10), _timerCallBack);
   }
 
   void _timerCallBack(Timer timer) {

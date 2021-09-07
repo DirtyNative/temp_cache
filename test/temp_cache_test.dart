@@ -3,11 +3,11 @@ import 'package:temp_cache/temp_cache.dart';
 
 void main() {
   test('Cache single', () {
-    var cache = Cache<TestItem>();
+    final cache = Cache<TestItem>();
 
-    final item1 = TestItem('1', true);
-    final item2 = TestItem('2', true);
-    final item3 = TestItem('3', false);
+    final item1 = TestItem('1');
+    final item2 = TestItem('2');
+    final item3 = TestItem('3');
 
     cache.put(item1.id, item1);
     cache.put(item2.id, item2);
@@ -19,11 +19,11 @@ void main() {
   });
 
   test('Cache multiple', () {
-    var cache = Cache<TestItem>();
+    final cache = Cache<TestItem>();
 
-    final item1 = TestItem('1', true);
-    final item2 = TestItem('2', true);
-    final item3 = TestItem('3', false);
+    final item1 = TestItem('1');
+    final item2 = TestItem('2');
+    final item3 = TestItem('3');
 
     final List<TestItem> items = [item1, item2, item3];
 
@@ -35,11 +35,11 @@ void main() {
   });
 
   test('Get all', () {
-    var cache = Cache<TestItem>();
+    final cache = Cache<TestItem>();
 
-    final item1 = TestItem('1', true);
-    final item2 = TestItem('2', true);
-    final item3 = TestItem('3', false);
+    final item1 = TestItem('1');
+    final item2 = TestItem('2');
+    final item3 = TestItem('3');
 
     final List<TestItem> items = [item1, item2, item3];
 
@@ -49,11 +49,11 @@ void main() {
   });
 
   test('Remove item', () {
-    var cache = Cache<TestItem>();
+    final cache = Cache<TestItem>();
 
-    final item1 = TestItem('1', true);
-    final item2 = TestItem('2', true);
-    final item3 = TestItem('3', false);
+    final item1 = TestItem('1');
+    final item2 = TestItem('2');
+    final item3 = TestItem('3');
 
     final List<TestItem> items = [item1, item2, item3];
 
@@ -67,7 +67,6 @@ void main() {
 
 class TestItem {
   late final String id;
-  late final bool isTrue;
 
-  TestItem(this.id, this.isTrue);
+  TestItem(this.id);
 }

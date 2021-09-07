@@ -4,6 +4,18 @@ A package which provides functionality to store objects inside a temporary cache
 
 ## Getting Started
 
+Import the package within your **pubspec.yaml**
+
+```yaml
+temp_cache:
+```
+
+Then you can use the classes via importing the lib:
+
+``` dart
+import 'package:temp_cache/temp_cache.dart';
+```
+
 Store objects:
 
 ``` dart

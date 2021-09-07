@@ -54,6 +54,23 @@ class Cache<T> {
     return list;
   }
 
+  List<T>? getWhere(bool Function(CacheItem<T>) function) {
+    final items = _cache.where(function);
+
+    List<T>? list;
+
+    for (final item in items) {
+      if (_isItemOutdated(item)) {
+        removeItem(item);
+      } else {
+        list ??= [];
+        list.add(item.item);
+      }
+    }
+
+    return list;
+  }
+
   /// Inserts an item with the given key into the cache
   void put(String key, T item) {
     putWithDuration(key, item, _duration);

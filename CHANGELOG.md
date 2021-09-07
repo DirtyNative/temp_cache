@@ -1,3 +1,7 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Implemented basic functionality
+
+## 0.0.5
+
+Implemented function 'getWhere()' which helps retrieving the correct items

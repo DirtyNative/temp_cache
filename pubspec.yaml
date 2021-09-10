@@ -1,6 +1,6 @@
 name: temp_cache
 description: A package which provides functionality to store objects inside a temporary cache inside memory
-version: 0.0.5
+version: 0.0.7
 homepage: https://github.com/DirtyNative/temp_cache
 
 environment:
